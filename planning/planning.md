@@ -104,3 +104,14 @@ The stretch goals below are optional, so feel free to come up with your own too.
 Jocelyne - look into JSDoc
 Pieter - Album art
 Jocelyne - readme.md
+
+```js
+/**
+ * Route to add a new activity
+ * @name POST /activities
+ * @kind API query
+ * @param {string} body.activity_type - Activity type
+ * @param {number} body.activity_duration - Activity duration in minutes
+ * @returns {object}
+ */
+```
