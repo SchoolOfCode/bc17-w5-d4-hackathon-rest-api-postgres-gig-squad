@@ -22,42 +22,43 @@ Response Specification: All JSON responses from your API should adhere to the JS
 
 ## Use the below as the basis for pseudocode
 
-HTTP Method
-	Path
-	Request Body (JSON)
-	Response Body (JSON)
-	Status Code
-	Description
-GET
-	/resource
-	N/A
-	List of resources
-	200
-	Retrieve all resources
-GET
-	/resource/:id
-	N/A
-	A particular resource object
-	200
-	Retrieve a specific resource by its ID
-POST
-	/resource
-	New resource object
-	An newly created resource object
-	201
-	Create a new resource
-PATCH
-	/resource/:id
-	Edited resource object 
-	An edited resource object
-	200
-	Update the details of a specific resource
-DELETE
-	/resource/:id
-	N/A
-	An deleted resource object
-	200
-	Remove a specific resource by its ID
+    HTTP Method
+        Path
+        Request Body (JSON)
+        Response Body (JSON)
+        Status Code
+        Description
+    GET
+        /resource
+        N/A
+        List of resources
+        200
+        Retrieve all resources
+    GET
+        /resource/:id
+        N/A
+        A particular resource object
+        200
+        Retrieve a specific resource by its ID
+    POST
+        /resource
+        New resource object
+        An newly created resource object
+        201
+        Create a new resource
+    PATCH
+        /resource/:id
+        Edited resource object 
+        An edited resource object
+        200
+        Update the details of a specific resource
+    DELETE
+        /resource/:id
+        N/A
+        An deleted resource object
+        200
+        Remove a specific resource by its ID
+
 ## Milestones
 
     Plan and design your database schema (You should have a minimum of 2 tables that are linked with a primary and foreign key)
@@ -72,15 +73,15 @@ DELETE
 
 ## Stretch Goals
 
-The stretch goals below are optional, so feel free to come up with your own too.
-    Advanced Routing with Query Parameters
-        Search: Add a search feature on the /resource endpoint. For instance, /resource?name=ResourceName could return resources with names matching the query.
-        Sorting: Allow sorting of resources. For instance, /resource?sort=name could return resources sorted alphabetically by name.
-    Error Handling and Responses
-        If a resource with a specific ID isn't found, return a 404 Not Found status code and a clear error message.
-        For other errors, such as server errors or bad request data, return appropriate status codes like 500 Internal Server Error or 400 Bad Request with clarifying error messages.
-        Implement middleware for error handling in your Express server.
-    In a separate repository, create a frontend for your API and use a UI and fetch to interact with it.
+    The stretch goals below are optional, so feel free to come up with your own too.
+        Advanced Routing with Query Parameters
+            Search: Add a search feature on the /resource endpoint. For instance, /resource?name=ResourceName could return resources with names matching the query.
+            Sorting: Allow sorting of resources. For instance, /resource?sort=name could return resources sorted alphabetically by name.
+        Error Handling and Responses
+            If a resource with a specific ID isn't found, return a 404 Not Found status code and a clear error message.
+            For other errors, such as server errors or bad request data, return appropriate status codes like 500 Internal Server Error or 400 Bad Request with clarifying error messages.
+            Implement middleware for error handling in your Express server.
+        In a separate repository, create a frontend for your API and use a UI and fetch to interact with it.
 
 
 ## Presentation Guidelines
@@ -101,9 +102,9 @@ The stretch goals below are optional, so feel free to come up with your own too.
 
 ## After hours work
 
-Jocelyne - look into JSDoc
-Pieter - Album art
-Jocelyne - readme.md
+    Jocelyne - look into JSDoc
+    Pieter - Album art
+    Jocelyne - readme.md
 
 ```js
 /**
