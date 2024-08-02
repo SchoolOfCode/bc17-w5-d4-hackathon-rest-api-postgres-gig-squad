@@ -37,6 +37,28 @@ app.use(express.json()); // express.json() middleware is used to parse incoming 
  * @example <caption>JSON response</caption>
 {
     "status": "success",
+    "data": {
+        "id": 2,
+        "name": "Jay-Z"
+    }
+}
+ */
+
+app.get("/artists/", async function (req, res) {
+  const artists = await getArtists();
+  res.status(200).json({ status: "success", data: artists });
+});
+
+// Endpoint to retrieve a artist by id
+/**
+ * @name `GET` `/artists/:id`
+ * @description Route to retrieve info on all artists
+ * @kind API query
+ * @param {number} id - Artist id to retrieve
+ * @returns JSON response
+ * @example <caption>JSON response</caption>
+{
+    "status": "success",
     "data": [
         {
             "id": 1,
@@ -58,13 +80,18 @@ app.use(express.json()); // express.json() middleware is used to parse incoming 
 }
  */
 
-app.get("/artists/", async function (req, res) {
-  const artists = await getArtists();
-  res.status(200).json({ status: "success", data: artists });
-});
-
-// Endpoint to retrieve a artist by id
 app.get("/artists/:id", async function (req, res) {
+  const id = req.params.id;
+  const artist = await getArtistById(id);
+
+  // Assume 404 status if the artist is not found
+  if (!artist) {
+    return res
+      .status(404)
+      .json({ status: "fail", data: { msg: "Artist not found" } });
+  }
+
+  res.status(200).json({ status: "success", data: artist });
 
 });
 
@@ -124,7 +151,7 @@ app.get("/albums/", async function (req, res) {
  * @name `GET` `/albums/:id`
  * @description Route to retrieve info on a single album
  * @kind API query
- * @param {number} id - Activity type
+ * @param {number} id - Album id to retrieve
  * @returns JSON response
  * @example <caption>JSON response</caption>
 {

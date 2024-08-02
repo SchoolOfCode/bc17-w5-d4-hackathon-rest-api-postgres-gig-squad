@@ -1,3 +1,56 @@
+<a name="`GET` `/artists`"></a>
+
+## `GET` `/artists` ⇒
+Route to retrieve info on all artists
+
+**Kind**: global API query  
+**Returns**: JSON response  
+**Example** *(JSON response)*  
+```js
+{
+    "status": "success",
+    "data": {
+        "id": 2,
+        "name": "Jay-Z"
+    }
+}
+```
+<a name="`GET` `/artists/_id`"></a>
+
+## `GET` `/artists/:id` ⇒
+Route to retrieve info on all artists
+
+**Kind**: global API query  
+**Returns**: JSON response  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>number</code> | Artist id to retrieve |
+
+**Example** *(JSON response)*  
+```js
+{
+    "status": "success",
+    "data": [
+        {
+            "id": 1,
+            "name": "Dua Lipa"
+        },
+        {
+            "id": 2,
+            "name": "Jay-Z"
+        },
+        {
+            "id": 3,
+            "name": "Def Leppard"
+        },
+        {
+            "id": 4,
+            "name": "Muse"
+        }
+    ]
+}
+```
 <a name="`GET` `/albums`"></a>
 
 ## `GET` `/albums` ⇒
@@ -39,7 +92,7 @@ Route to retrieve info on a single album
 
 | Param | Type | Description |
 | --- | --- | --- |
-| id | <code>number</code> | Activity type |
+| id | <code>number</code> | Album id to retrieve |
 
 **Example** *(JSON response)*  
 ```js
