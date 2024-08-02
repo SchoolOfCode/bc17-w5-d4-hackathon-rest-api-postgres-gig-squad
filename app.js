@@ -257,10 +257,10 @@ app.get("/albums/:id", async function (req, res) {
  * @name `POST` `/albums`
  * @description Route to create a new album
  * @kind API query
- * @param {string} title - Album title
- * @param {string} published_date - Date the album was published
- * @param {number} artist_id - Artist id
- * @param {string} release_id - MusicBrainz API release id
+ * @param {string} body.title - Album title
+ * @param {string} body.published_date - Date the album was published
+ * @param {number} body.artist_id - Artist id
+ * @param {string} body.release_id - MusicBrainz API release id
  * @returns JSON response
  * @example <caption>JSON response</caption>
 {
@@ -287,10 +287,10 @@ app.post("/albums/", async function (req, res) {
  * @name `PATCH` `/albums/:id`
  * @description Route to update a new album
  * @kind API query
- * @param {string} title - Album title
- * @param {string} published_date - Date the album was published
- * @param {number} artist_id - Artist id
- * @param {string} release_id - MusicBrainz API release id
+ * @param {string} body.title - Album title
+ * @param {string} body.published_date - Date the album was published
+ * @param {number} body.artist_id - Artist id
+ * @param {string} body.release_id - MusicBrainz API release id
  * @returns JSON response
  * @example <caption>JSON response</caption>
 {

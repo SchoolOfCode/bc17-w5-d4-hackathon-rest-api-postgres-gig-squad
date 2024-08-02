@@ -187,10 +187,10 @@ Route to create a new album
 
 | Param | Type | Description |
 | --- | --- | --- |
-| title | <code>string</code> | Album title |
-| published_date | <code>string</code> | Date the album was published |
-| artist_id | <code>number</code> | Artist id |
-| release_id | <code>string</code> | MusicBrainz API release id |
+| body.title | <code>string</code> | Album title |
+| body.published_date | <code>string</code> | Date the album was published |
+| body.artist_id | <code>number</code> | Artist id |
+| body.release_id | <code>string</code> | MusicBrainz API release id |
 
 **Example** *(JSON response)*  
 ```js
@@ -216,10 +216,10 @@ Route to update a new album
 
 | Param | Type | Description |
 | --- | --- | --- |
-| title | <code>string</code> | Album title |
-| published_date | <code>string</code> | Date the album was published |
-| artist_id | <code>number</code> | Artist id |
-| release_id | <code>string</code> | MusicBrainz API release id |
+| body.title | <code>string</code> | Album title |
+| body.published_date | <code>string</code> | Date the album was published |
+| body.artist_id | <code>number</code> | Artist id |
+| body.release_id | <code>string</code> | MusicBrainz API release id |
 
 **Example** *(JSON response)*  
 ```js
