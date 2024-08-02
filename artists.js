@@ -35,6 +35,9 @@ return result.rows[0] || null;
 
 export async function createArtist(artist) {
   // Query the database to create an artist and return the newly created artist
+  const queryText = "INSERT INTO artists (name) VALUES ($1) RETURNING *;";
+  const result = await pool.query(queryText, [artist.name]);
+  return result.rows[0] || null;
 }
 
 export async function updateArtistById(id, updates) {

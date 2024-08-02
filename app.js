@@ -96,8 +96,26 @@ app.get("/artists/:id", async function (req, res) {
 });
 
 // Endpoint to create a new artist
-app.post("/artists/", async function (req, res) {
+/**
+ * @name `POST` `/artists`
+ * @description Route to create new artist record
+ * @kind API query
+ * @param {string} body.name - Artist name
+ * @returns JSON response
+ * @example <caption>JSON response</caption>
+{
+    "status": "success",
+    "data": {
+        "id": 5,
+        "name": "Jocelyne"
+    }
+}
+ */
 
+app.post("/artists/", async function (req, res) {
+  const data = req.body;
+  const artist = await createArtist(data);
+  res.status(201).json({ status: "success", data: artist });
 });
 
 // Endpoint to update a specific artist by id
