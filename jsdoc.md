@@ -96,6 +96,28 @@ Route to update an artist by id
     }
 }
 ```
+<a name="`DELETE` `/artists/_id`"></a>
+
+## `DELETE` `/artists/:id` ⇒
+Route to delete an artist by id
+
+**Kind**: global API query  
+**Returns**: JSON response  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>number</code> | Artist id to delete |
+
+**Example** *(JSON response)*  
+```js
+{
+    "status": "success",
+    "data": {
+        "id": 5,
+        "name": "Jocelyne Strogen-Jones"
+    }
+}
+```
 <a name="`GET` `/albums`"></a>
 
 ## `GET` `/albums` ⇒

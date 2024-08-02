@@ -150,8 +150,32 @@ app.patch("/artists/:id", async function (req, res) {
 });
 
 // Endpoint to delete a specific artist by id
-app.delete("/artists/:id", async function (req, res) {
+/**
+ * @name `DELETE` `/artists/:id`
+ * @description Route to delete an artist by id
+ * @kind API query
+ * @param {number} id - Artist id to delete
+ * @returns JSON response
+ * @example <caption>JSON response</caption>
+{
+    "status": "success",
+    "data": {
+        "id": 5,
+        "name": "Jocelyne Strogen-Jones"
+    }
+}
+ */
 
+app.delete("/artists/:id", async function (req, res) {
+  const id = req.params.id;
+  const artist = await deleteArtistById(id);
+  // Assume 404 status if the artist is not found
+  if (!artist) {
+    return res
+      .status(404)
+      .json({ status: "fail", data: { msg: "Artist not found" } });
+  }
+  res.status(200).json({ status: "success", data: artist });
 });
 
 // Album Route Handlers

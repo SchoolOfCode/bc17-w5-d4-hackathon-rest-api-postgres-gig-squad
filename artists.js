@@ -49,4 +49,7 @@ export async function updateArtistById(id, updates) {
 
 export async function deleteArtistById(id) {
   // Query the database to delete the artist and return the deleted artist or null
+  const queryText = "DELETE FROM artists WHERE id = $1 RETURNING *;";
+  const result = await pool.query(queryText, [id]);
+  return result.rows[0] || null;
 }
