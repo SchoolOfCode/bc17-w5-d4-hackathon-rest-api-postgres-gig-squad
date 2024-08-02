@@ -258,7 +258,7 @@ app.get("/albums/:id", async function (req, res) {
  * @description Route to create a new album
  * @kind API query
  * @param {string} title - Album title
- * @param {date string} published_date - Date the album was published
+ * @param {string} published_date - Date the album was published
  * @param {number} artist_id - Artist id
  * @param {string} release_id - MusicBrainz API release id
  * @returns JSON response
@@ -288,7 +288,7 @@ app.post("/albums/", async function (req, res) {
  * @description Route to update a new album
  * @kind API query
  * @param {string} title - Album title
- * @param {date string} published_date - Date the album was published
+ * @param {string} published_date - Date the album was published
  * @param {number} artist_id - Artist id
  * @param {string} release_id - MusicBrainz API release id
  * @returns JSON response
@@ -321,8 +321,35 @@ app.patch("/albums/:id", async function (req, res) {
 });
 
 // Endpoint to delete a specific album by id
+/**
+ * @name `DELETE` `/albums/:id`
+ * @description Route to delete an album by id
+ * @kind API query
+ * @param {number} id - Album id to delete
+ * @returns JSON response
+ * @example <caption>JSON response</caption>
+{
+    "status": "success",
+    "data": {
+        "id": 9,
+        "title": "The Spiral Of Which Doth Descend",
+        "published_date": "1994-03-08T00:00:00.000Z",
+        "artist_id": 6,
+        "release_id": "2d410836-5add-3661-b0b0-168ba1696611"
+    }
+}
+ */
+
 app.delete("/albums/:id", async function (req, res) {
-  
+  const id = req.params.id;
+  const album = await deleteAlbumById(id);
+  // Assume 404 status if the album is not found
+  if (!album) {
+    return res
+      .status(404)
+      .json({ status: "fail", data: { msg: "Album not found" } });
+  }
+  res.status(200).json({ status: "success", data: album });
 });
 
 // Start the server and listen on the specified port

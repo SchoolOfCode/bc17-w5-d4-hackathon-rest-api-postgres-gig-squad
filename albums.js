@@ -117,4 +117,7 @@ export async function updateAlbumById(id, updates) {
 
 export async function deleteAlbumById(id) {
   // Query the database to delete the album and return the deleted album or null
+  const queryText = "DELETE FROM albums WHERE id = $1 RETURNING *;";
+  const result = await pool.query(queryText, [id]);
+  return result.rows[0] || null;
 }

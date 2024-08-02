@@ -177,3 +177,86 @@ Route to retrieve info on a single album
     ]
 }
 ```
+<a name="`POST` `/albums`"></a>
+
+## `POST` `/albums` ⇒
+Route to create a new album
+
+**Kind**: global API query  
+**Returns**: JSON response  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| title | <code>string</code> | Album title |
+| published_date | <code>string</code> | Date the album was published |
+| artist_id | <code>number</code> | Artist id |
+| release_id | <code>string</code> | MusicBrainz API release id |
+
+**Example** *(JSON response)*  
+```js
+{
+    "status": "success",
+    "data": {
+        "id": 9,
+        "title": "The Downward Spiral",
+        "published_date": "1994-03-08T00:00:00.000Z",
+        "artist_id": 6,
+        "release_id": "2d410836-5add-3661-b0b0-168ba1696611",
+        "album_art_url": "http://coverartarchive.org/release/2d410836-5add-3661-b0b0-168ba1696611/2546761764-500.jpg"
+    }
+}
+```
+<a name="`PATCH` `/albums/_id`"></a>
+
+## `PATCH` `/albums/:id` ⇒
+Route to update a new album
+
+**Kind**: global API query  
+**Returns**: JSON response  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| title | <code>string</code> | Album title |
+| published_date | <code>string</code> | Date the album was published |
+| artist_id | <code>number</code> | Artist id |
+| release_id | <code>string</code> | MusicBrainz API release id |
+
+**Example** *(JSON response)*  
+```js
+{
+    "status": "success",
+    "data": {
+        "id": 9,
+        "title": "The Spiral Of Which Doth Descend",
+        "published_date": "1994-03-08T00:00:00.000Z",
+        "artist_id": 6,
+        "release_id": "2d410836-5add-3661-b0b0-168ba1696611",
+        "album_art_url": "http://coverartarchive.org/release/2d410836-5add-3661-b0b0-168ba1696611/2546761764-500.jpg"
+    }
+}
+```
+<a name="`DELETE` `/albums/_id`"></a>
+
+## `DELETE` `/albums/:id` ⇒
+Route to delete an album by id
+
+**Kind**: global API query  
+**Returns**: JSON response  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>number</code> | Album id to delete |
+
+**Example** *(JSON response)*  
+```js
+{
+    "status": "success",
+    "data": {
+        "id": 9,
+        "title": "The Spiral Of Which Doth Descend",
+        "published_date": "1994-03-08T00:00:00.000Z",
+        "artist_id": 6,
+        "release_id": "2d410836-5add-3661-b0b0-168ba1696611"
+    }
+}
+```
