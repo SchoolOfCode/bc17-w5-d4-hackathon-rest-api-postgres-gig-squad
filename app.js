@@ -237,7 +237,7 @@ app.get("/albums/", async function (req, res) {
 }
  */
 
-// Endpoint to retrieve a album by id
+// Endpoint to retrieve an album by id
 app.get("/albums/:id", async function (req, res) {
   const id = req.params.id;
   const album = await getAlbumById(id);
@@ -253,12 +253,70 @@ app.get("/albums/:id", async function (req, res) {
 });
 
 // Endpoint to create a new album
-app.post("/albums/", async function (req, res) {
+/**
+ * @name `POST` `/albums`
+ * @description Route to create a new album
+ * @kind API query
+ * @param {string} title - Album title
+ * @param {date string} published_date - Date the album was published
+ * @param {number} artist_id - Artist id
+ * @param {string} release_id - MusicBrainz API release id
+ * @returns JSON response
+ * @example <caption>JSON response</caption>
+{
+    "status": "success",
+    "data": {
+        "id": 9,
+        "title": "The Downward Spiral",
+        "published_date": "1994-03-08T00:00:00.000Z",
+        "artist_id": 6,
+        "release_id": "2d410836-5add-3661-b0b0-168ba1696611",
+        "album_art_url": "http://coverartarchive.org/release/2d410836-5add-3661-b0b0-168ba1696611/2546761764-500.jpg"
+    }
+}
+ */
 
+app.post("/albums/", async function (req, res) {
+  const data = req.body;
+  const album = await createAlbum(data);
+  res.status(201).json({ status: "success", data: album });
 });
 
 // Endpoint to update a specific album by id
+/**
+ * @name `PATCH` `/albums/:id`
+ * @description Route to update a new album
+ * @kind API query
+ * @param {string} title - Album title
+ * @param {date string} published_date - Date the album was published
+ * @param {number} artist_id - Artist id
+ * @param {string} release_id - MusicBrainz API release id
+ * @returns JSON response
+ * @example <caption>JSON response</caption>
+{
+    "status": "success",
+    "data": {
+        "id": 9,
+        "title": "The Spiral Of Which Doth Descend",
+        "published_date": "1994-03-08T00:00:00.000Z",
+        "artist_id": 6,
+        "release_id": "2d410836-5add-3661-b0b0-168ba1696611",
+        "album_art_url": "http://coverartarchive.org/release/2d410836-5add-3661-b0b0-168ba1696611/2546761764-500.jpg"
+    }
+}
+ */
+
 app.patch("/albums/:id", async function (req, res) {
+  const id = req.params.id;
+  const data = req.body;
+  const album = await updateAlbumById(id, data);
+  // Assume 404 status if the album is not found
+  if (!album) {
+    return res
+      .status(404)
+      .json({ status: "fail", data: { msg: "album not found" } });
+  }
+  res.status(200).json({ status: "success", data: album });
 
 });
 

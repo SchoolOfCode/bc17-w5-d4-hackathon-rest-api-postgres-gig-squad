@@ -93,10 +93,26 @@ export async function getAlbumById(id) {
 
 export async function createAlbum(album) {
   // Query the database to create an album and return the newly created album
+  const queryText = "INSERT INTO albums (title, published_date, artist_id, release_id) VALUES ($1, $2, $3, $4) RETURNING *;";
+  const result = await pool.query(queryText, [album.title, album.published_date, album.artist_id, album.release_id]);
+
+  // Fetch album art from a web API
+  if (result.rows && result.rows.length > 0) {
+    result.rows = await fetchAlbumArt(result.rows);
+  };
+  return result.rows[0] || null;
 }
 
 export async function updateAlbumById(id, updates) {
   // Query the database to update the album and return the newly updated album or null
+  const queryText = "UPDATE albums SET title = $1, published_date = $2, artist_id = $3, release_id = $4 WHERE id = $5 RETURNING *;";
+  const result = await pool.query(queryText, [updates.title, updates.published_date, updates.artist_id, updates.release_id, id]);
+
+  // Fetch album art from a web API
+  if (result.rows && result.rows.length > 0) {
+    result.rows = await fetchAlbumArt(result.rows);
+  };
+  return result.rows[0] || null;
 }
 
 export async function deleteAlbumById(id) {
