@@ -28,10 +28,39 @@ app.use(express.json()); // express.json() middleware is used to parse incoming 
 
 // Artist Route Handlers
 
-// Endpoint to retrieve all artists
+// Endpoint to retrieve all artist
+/**
+ * @name `GET` `/artists`
+ * @description Route to retrieve info on all artists
+ * @kind API query
+ * @returns JSON response
+ * @example <caption>JSON response</caption>
+{
+    "status": "success",
+    "data": [
+        {
+            "id": 1,
+            "name": "Dua Lipa"
+        },
+        {
+            "id": 2,
+            "name": "Jay-Z"
+        },
+        {
+            "id": 3,
+            "name": "Def Leppard"
+        },
+        {
+            "id": 4,
+            "name": "Muse"
+        }
+    ]
+}
+ */
+
 app.get("/artists/", async function (req, res) {
-  console.log("I'm alive");
-  res.status(200).send("I'm alive!");
+  const artists = await getArtists();
+  res.status(200).json({ status: "success", data: artists });
 });
 
 // Endpoint to retrieve a artist by id

@@ -3,6 +3,16 @@ import { pool } from "./db/index.js";
 
 export async function getArtists() {
   // Query the database and return all artists
+
+  // Define the SQL query to fetch all artists from the 'artists' table
+  const queryText = `SELECT *
+  FROM artists`;
+
+// Use the pool object to send the query to the database
+const result = await pool.query(queryText);
+
+// The rows property of the result object contains the retrieved records
+return result.rows;
 }
 
 export async function getArtistById(id) {
