@@ -216,6 +216,7 @@ Route to update a new album
 
 | Param | Type | Description |
 | --- | --- | --- |
+| id | <code>number</code> | Album id to update |
 | body.title | <code>string</code> | Album title |
 | body.published_date | <code>string</code> | Date the album was published |
 | body.artist_id | <code>number</code> | Artist id |
