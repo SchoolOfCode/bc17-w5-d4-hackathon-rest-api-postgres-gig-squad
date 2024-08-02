@@ -51,6 +51,51 @@ Route to retrieve info on all artists
     ]
 }
 ```
+<a name="`POST` `/artists`"></a>
+
+## `POST` `/artists` ⇒
+Route to create new artist record
+
+**Kind**: global API query  
+**Returns**: JSON response  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| body.name | <code>string</code> | Artist name |
+
+**Example** *(JSON response)*  
+```js
+{
+    "status": "success",
+    "data": {
+        "id": 5,
+        "name": "Jocelyne"
+    }
+}
+```
+<a name="`PATCH` `/artists/_id`"></a>
+
+## `PATCH` `/artists/:id` ⇒
+Route to update an artist by id
+
+**Kind**: global API query  
+**Returns**: JSON response  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>number</code> | Artist id to update |
+| body.name | <code>string</code> | Artist name |
+
+**Example** *(JSON response)*  
+```js
+{
+    "status": "success",
+    "data": {
+        "id": 5,
+        "name": "Jocelyne Strogen-Jones"
+    }
+}
+```
 <a name="`GET` `/albums`"></a>
 
 ## `GET` `/albums` ⇒

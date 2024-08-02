@@ -119,8 +119,34 @@ app.post("/artists/", async function (req, res) {
 });
 
 // Endpoint to update a specific artist by id
-app.patch("/artists/:id", async function (req, res) {
+/**
+ * @name `PATCH` `/artists/:id`
+ * @description Route to update an artist by id
+ * @kind API query
+ * @param {number} id - Artist id to update
+ * @param {string} body.name - Artist name
+ * @returns JSON response
+ * @example <caption>JSON response</caption>
+{
+    "status": "success",
+    "data": {
+        "id": 5,
+        "name": "Jocelyne Strogen-Jones"
+    }
+}
+ */
 
+app.patch("/artists/:id", async function (req, res) {
+  const id = req.params.id;
+  const data = req.body;
+  const artist = await updateArtistById(id, data);
+  // Assume 404 status if the artist is not found
+  if (!artist) {
+    return res
+      .status(404)
+      .json({ status: "fail", data: { msg: "artist not found" } });
+  }
+  res.status(200).json({ status: "success", data: artist });
 });
 
 // Endpoint to delete a specific artist by id
